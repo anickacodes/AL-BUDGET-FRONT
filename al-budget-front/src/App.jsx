@@ -5,6 +5,9 @@ import NavBar from './components/NavBar'
 import TransactionCard from './components/TransactionCard'
 import TransactionDetails from './components/TransactionDetails'
 import TransactionList from './components/TransactionList'
+import AddInfo from './pages/AddInfo'
+import Details from './pages/Details'
+import List from './pages/List'
 
 function App() {
 
@@ -16,7 +19,9 @@ function App() {
     <TransactionCard />
     <TransactionDetails/>
     <TransactionList /> */}
-    
+       <List />
+    <Details />
+    <AddInfo />
     </>
   )
 }

@@ -1,8 +1,16 @@
+
+import TransactionList from '../components/TransactionList'
+
+
+
+
+
 const List = () => {
 
     return (
         <>
-        <h2> Our List Page </h2></>
+        <TransactionList/>
+        </>
     )
 }
 

@@ -1,8 +1,13 @@
+import AddTransactionForm from "../components/AddTransactionform"
+
+
+
 const AddInfo = () => {
 
     return (
         <>
-        <h2> Our Add Info Page </h2></>
+        <AddTransactionForm/>
+        </>
     )
 }
 
