@@ -1,3 +1,6 @@
+import '../styles/TransactionList.css'
+
+
 const TransactionList = () => {
 
     return (

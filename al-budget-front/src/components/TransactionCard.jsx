@@ -1,3 +1,5 @@
+import '../styles/TransactionCard.css'
+
 const TransactionCard = () => {
 
     return (

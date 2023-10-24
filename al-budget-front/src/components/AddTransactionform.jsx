@@ -1,3 +1,5 @@
+import '../styles/AddTransactionForm.css'
+
 const AddTransactionForm = () => {
 
     return (

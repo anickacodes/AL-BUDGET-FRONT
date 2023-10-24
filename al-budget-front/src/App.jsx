@@ -1,27 +1,30 @@
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
-import AddTransactionForm from './components/AddTransactionform'
-import NavBar from './components/NavBar'
-import TransactionCard from './components/TransactionCard'
-import TransactionDetails from './components/TransactionDetails'
-import TransactionList from './components/TransactionList'
 import AddInfo from './pages/AddInfo'
 import Details from './pages/Details'
 import List from './pages/List'
+import NavBar from './components/NavBar'
 
 function App() {
 
   return (
     <>
-    <h2>Run it</h2>
-    {/* <NavBar/> */}
-    {/* <AddTransactionForm />
-    <TransactionCard />
-    <TransactionDetails/>
-    <TransactionList /> */}
-       <List />
-    <Details />
-    <AddInfo />
+    <div className='App'>
+      <Router>
+    {/* <h2>Run it</h2> */}
+    <NavBar/>
+
+    {/* <TransactionCard /> */}
+ <Routes>
+ <Route path='/'  element={<List />}/>
+ <Route path='/add' element={<AddInfo />}/>
+ <Route path='/details/:id' element={<Details />}/>
+       
+    
+    
+    </Routes>
+    </Router>
+    </div>
     </>
   )
 }

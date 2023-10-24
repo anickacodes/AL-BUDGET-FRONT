@@ -6,7 +6,7 @@ const AddInfo = () => {
 
     return (
         <>
-        <AddTransactionForm/>
+        <AddTransactionForm />
         </>
     )
 }
