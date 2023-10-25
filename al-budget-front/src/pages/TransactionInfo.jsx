@@ -1,6 +1,6 @@
 import TransactionDetails from "../components/TransactionDetails"
 
-const Details = () => {
+const TransactionInfo = () => {
 
     return (
         <>
@@ -9,4 +9,4 @@ const Details = () => {
     )
 }
 
-export default Details
+export default TransactionInfo

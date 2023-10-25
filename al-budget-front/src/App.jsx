@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
-import AddInfo from './pages/AddInfo'
-import Details from './pages/Details'
 import List from './pages/List'
 import NavBar from './components/NavBar'
+import NewTransation from './pages/NewTransaction'
+import TransactionInfo from './pages/TransactionInfo'
 
 function App() {
 
@@ -17,8 +17,8 @@ function App() {
     {/* <TransactionCard /> */}
  <Routes>
  <Route path='/'  element={ <List />}/>
- <Route path='/add' element={<AddInfo />}/>
- <Route path='/details' element={<Details />}/>
+ <Route path='/add' element={<NewTransation />}/>
+ <Route path='/details' element={<TransactionInfo />}/>
        
     
     
