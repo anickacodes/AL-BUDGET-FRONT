@@ -16,9 +16,9 @@ function App() {
 
     {/* <TransactionCard /> */}
  <Routes>
- <Route path='/'  element={<List />}/>
+ <Route path='/'  element={ <List />}/>
  <Route path='/add' element={<AddInfo />}/>
- <Route path='/details/:id' element={<Details />}/>
+ <Route path='/details' element={<Details />}/>
        
     
     

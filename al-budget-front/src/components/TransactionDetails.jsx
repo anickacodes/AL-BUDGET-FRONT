@@ -4,7 +4,7 @@ import "../styles/TransactionDetails.css";
 const TransactionDetails = () => {
   const API = import.meta.env.VITE_REACT_VAR_URL;
   console.log(`${API}/transactions`);
-  const [data, setData] = useState([]);
+  const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
     fetch(`${API}/transactions`)
@@ -12,47 +12,47 @@ const TransactionDetails = () => {
         if (!res.ok) {
           throw new Error(`HTTP error! Status: ${res.status}`);
         }
-        // Parse the response data into JSON
+        // await response as var then set state to be
         const transactions = await res.json();
 
-        // Set the parsed JSON data in the component state
-        setData(transactions);
+        setTransactions(transactions);
       })
-      .catch((err) => console.log("Error:", err));
+      .catch((err) => console.error("Error:", err));
   }, []);
 
-  // Check if the data variable is initialized before calling the map() function
-  if (data) {
+  const renderTable = () => {
+    if (!transactions.length) {
+      return <p>Loading...</p>;
+    }
+
     return (
+      <>
+        <h2> Our Transactions Details </h2>
 
-      <table>
-        <thead>
- <h2> Our Add Transactions Details </h2> 
-
-          <tr>
-            <th>Item Name</th>
-            <th>Amount</th>
-            <th>Date</th>
-            <th>From</th>
-          </tr>
-        </thead>
-        <tbody>
-
-          {data.map((data) => (
-            <tr key={data.id}>
-              <td>{data.item_name}</td>
-              <td>${data.amount}</td>
-              <td>{data.date}</td>
-              <td>{data.from}</td>
+        <table>
+          <thead>
+            <tr>
+              <th>Item Name</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>From</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {transactions.map((transactions) => (
+              <tr key={transactions.id}>
+                <td>{transactions.item_name}</td>
+                <td>{transactions.from}</td>
+                <td>{transactions.date}</td>
+                <td>${transactions.amount}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
     );
-  } else {
-    // Return a loading indicator or something similar
-    return <p>Loading...</p>;
-  }
+  };
+  return renderTable();
 };
 export default TransactionDetails;
 
@@ -60,8 +60,8 @@ export default TransactionDetails;
 // {/* useContext?? */}
 // {/* useStates */}
 
-  // headers: {
-      //   "Content-Type": "application/json",
-      //   "Access-Control-Allow-Origin": "*",
-      //   "Cache-Control": "max-age=3600"
-      // }
+// headers: {
+//   "Content-Type": "application/json",
+//   "Access-Control-Allow-Origin": "*",
+//   "Cache-Control": "max-age=3600"
+// }

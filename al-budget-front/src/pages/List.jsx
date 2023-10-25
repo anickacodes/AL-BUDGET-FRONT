@@ -9,6 +9,7 @@ const List = () => {
 
     return (
         <>
+        🏠🏠🏠🏠🏠🏠🏠
         <TransactionList/>
         </>
     )
