@@ -35,14 +35,14 @@ const TransactionDetails = () => {
               <th>Item Name</th>
               <th>Amount</th>
               <th>Date</th>
-              <th>From</th>
+              {/* <th>From</th> */}
             </tr>
           </thead>
           <tbody>
             {transactions.map((transactions) => (
               <tr key={transactions.id}>
                 <td>{transactions.item_name}</td>
-                <td>{transactions.from}</td>
+                {/* <td>{transactions.from}</td> */}
                 <td>{transactions.date}</td>
                 <td>${transactions.amount}</td>
               </tr>

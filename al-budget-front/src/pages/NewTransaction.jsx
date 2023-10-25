@@ -2,7 +2,7 @@ import AddTransactionForm from "../components/AddTransactionform"
 
 
 
-const NewTransation = () => {
+const NewTransaction = () => {
 
     return (
         <>
@@ -11,4 +11,4 @@ const NewTransation = () => {
     )
 }
 
-export default NewTransation
+export default NewTransaction

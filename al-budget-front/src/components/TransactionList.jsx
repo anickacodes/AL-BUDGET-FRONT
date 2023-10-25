@@ -1,6 +1,6 @@
 import "../styles/TransactionList.css";
 import { useEffect, useState } from "react";
-
+import TransactionCard from "./TransactionCard";
 
 
 
@@ -30,28 +30,34 @@ const TransactionList = () => {
 
     return (
       <>
+     <div className="transaction-list">
+      <div className="transaction-items-list">
         <h2> Our Add Transactions Details </h2>
 
         <table>
-          <thead>
-            <tr>
-              <th>Item Name</th>
-              <th>Amount</th>
-              <th>Date</th>
-              <th>From</th>
-            </tr>
-          </thead>
-          <tbody>
-            {transactions.map((transactions) => (
-              <tr key={transactions.id}>
-                <td>{transactions.item_name}</td>
-                <td>{transactions.from}</td>
-                <td>{transactions.date}</td>
-                <td>${transactions.amount}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+              <thead>
+                <tr>
+                  <th>Item Name</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                  <th>From</th>
+                </tr>
+              </thead>
+              <tbody>
+                {transactions.map((transaction, index) => (
+                  <tr key={transaction.id}>
+                    <TransactionCard>
+                      {transaction.item_name}
+                      {transaction.from}
+                      {transaction.date}
+                      ${transaction.amount}
+                    </TransactionCard>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+        </div>
+        </div>
       </>
     );
   };
