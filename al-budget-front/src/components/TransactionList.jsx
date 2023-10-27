@@ -1,8 +1,7 @@
 import "../styles/TransactionList.css";
 import { useEffect, useState } from "react";
 import TransactionCard from "./TransactionCard";
-
-
+import { Link } from "react-router-dom";
 
 const TransactionList = () => {
   const API = import.meta.env.VITE_REACT_VAR_URL;
@@ -30,11 +29,11 @@ const TransactionList = () => {
 
     return (
       <>
-     <div className="transaction-list">
-      <div className="transaction-items-list">
-        <h2> Our Add Transactions Details </h2>
+        <div className="transaction-list">
+          <div className="transaction-items-list">
+            <h2> 🏠🏠🏠 Transaction Details 🏠🏠🏠 </h2>
 
-        <table>
+            <table>
               <thead>
                 <tr>
                   <th>Item Name</th>
@@ -44,19 +43,18 @@ const TransactionList = () => {
                 </tr>
               </thead>
               <tbody>
-                {transactions.map((transaction, index) => (
-                  <tr key={transaction.id}>
-                    <TransactionCard>
-                      {transaction.item_name}
-                      {transaction.from}
-                      {transaction.date}
-                      ${transaction.amount}
-                    </TransactionCard>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-        </div>
+            {transactions.map((transaction) => (
+              <tr key={transaction.id}>
+                <td>{transaction.item_name}</td>
+                <td>{transaction.amount}</td>
+                <td>{transaction.date}</td>
+                
+                <td> <Link to={`/transaction/${transaction.id}`}>{transaction.id} </Link> </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+          </div>
         </div>
       </>
     );

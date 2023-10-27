@@ -12,7 +12,7 @@ const AddTransactionForm = () => {
   function handleSubmit(e) {
     e.preventDefault();
     setFlag(true);
-    console.log("hi", transaction.date, transaction.name, transaction.amount);
+    console.log("hi", transaction.date, transaction.item_name, transaction.amount);
   }
 
   function handleChange(event) {
@@ -22,7 +22,7 @@ const AddTransactionForm = () => {
 
   useEffect(() => {
     if (flag) {
-      fetch("http://localhost:3001/transactions", {
+      fetch("http://localhost:3333/transactions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,6 +31,7 @@ const AddTransactionForm = () => {
       });
     }
     // check for & handle errors
+    setTransaction(transaction)
     setFlag(false)
   }, [flag]);
 
@@ -46,7 +47,7 @@ const AddTransactionForm = () => {
             </label>
             <input
               name={"date"}
-              value={transaction.date}
+              value={transaction.name}
               onChange={handleChange}
               type="text"
             ></input>
