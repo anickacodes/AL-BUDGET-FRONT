@@ -16,7 +16,7 @@ const AddTransactionForm = () => {
   }
 
   function handleChange(event) {
-    const [name, value] = event.target;
+    const {name, value} = event.target;
     setTransaction((prev) => ({ ...prev, [name]: value }));
   }
 
@@ -49,7 +49,7 @@ const AddTransactionForm = () => {
               name={"date"}
               value={transaction.name}
               onChange={handleChange}
-              type="text"
+              type="date"
             ></input>
           </div>
           <div className="form-group">
