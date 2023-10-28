@@ -15,11 +15,10 @@ const TransactionDetails = () => {
         if (!res.ok) {
           throw new Error(`HTTP error! Status: ${res.status}`);
         }
-        // await response as var then set state to be
-        const transactions = await res.json();
 
-        setTransactions(transactions);
+        return res.json();
       })
+      .then(data => setTransactions(data))
       .catch((err) => console.error("Error:", err));
   }, [id]);
 
@@ -28,17 +27,22 @@ const TransactionDetails = () => {
       return <p>Loading...</p>;
     }
 
+    const handleChange = (e) => {
+      // e.preventDefault()
+      const { name, value } = e.target;
+      setTransactions((prev) => ({ ...prev, [name]: value }));
+    };
+
     return (
       <>
-        <h2> Our Transactions Details </h2>
-
-        <table>
+        <div className="transaction-details">
+          <h2> Our Transactions Details </h2>
+          {/* <table>
           <thead>
             <tr>
               <th>Item Name</th>
               <th>Amount</th>
               <th>Date</th>
-              {/* <th>From</th> */}
             </tr>
           </thead>
           <tbody>
@@ -51,7 +55,22 @@ const TransactionDetails = () => {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table> */}
+
+          <div></div>
+
+          <div>
+            <label> Item-Name</label>
+            <input
+              type="text"
+              name="item-name"
+              value={transactions.item_name || ""}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div></div>
+        </div>
       </>
     );
   };

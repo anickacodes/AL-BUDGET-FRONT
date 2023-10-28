@@ -31,7 +31,7 @@ const TransactionList = () => {
       <>
         <div className="transaction-list">
           <div className="transaction-items-list">
-            <h2> 🏠🏠🏠 Transaction Details 🏠🏠🏠 </h2>
+            <h2> 🏠🏠🏠 Transaction List 🏠🏠🏠 </h2>
 
             <table>
               <thead>

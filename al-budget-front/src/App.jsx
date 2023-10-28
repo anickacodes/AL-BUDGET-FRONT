@@ -13,8 +13,8 @@ function App() {
           <NavBar />
           <Routes>
             <Route path="/" element={<List />} />
-            <Route path="/new" element={<NewTransaction />} />
-            <Route path="/show/:id" element={<TransactionInfo />} />
+            <Route path="/add" element={<NewTransaction />} />
+            <Route path="/transaction/:id" element={<TransactionInfo />} />
           </Routes>
         </Router>
       </div>
