@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import "../styles/TransactionDetails.css";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 const TransactionDetails = () => {
+  const { id } = useParams();
+  const [transactions, setTransactions] = useState([]);
+  const navigate = useNavigate();
   const API = import.meta.env.VITE_REACT_VAR_URL;
   console.log(`${API}/transactions`);
-  const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    fetch(`${API}/transactions`)
+    fetch(`${API}/transactions/${id}`)
       .then(async (res) => {
         if (!res.ok) {
           throw new Error(`HTTP error! Status: ${res.status}`);
@@ -18,7 +21,7 @@ const TransactionDetails = () => {
         setTransactions(transactions);
       })
       .catch((err) => console.error("Error:", err));
-  }, []);
+  }, [id]);
 
   const renderTable = () => {
     if (!transactions.length) {
@@ -42,7 +45,7 @@ const TransactionDetails = () => {
             {transactions.map((transactions) => (
               <tr key={transactions.id}>
                 <td>{transactions.item_name}</td>
-                {/* <td>{transactions.from}</td> */}
+                <td>{transactions.from}</td>
                 <td>{transactions.date}</td>
                 <td>${transactions.amount}</td>
               </tr>

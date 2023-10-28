@@ -6,19 +6,42 @@ const AddTransactionForm = () => {
     date: "",
     item_name: "",
     amount: "",
+    from: "",
   });
+
   const [flag, setFlag] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
     setFlag(true);
-    console.log("hi", transaction.date, transaction.item_name, transaction.amount);
-  }
+    console.log(
+      "hi",
+      transaction.date,
+      transaction.item_name,
+      transaction.amount,
+      transaction.from
+    );
+    }
+    
+    function handleChange(event) {
+      const { name, value } = event.target;
+      // setTransaction((prev) => ({ ...prev, [name]: value }));
 
-  function handleChange(event) {
-    const {name, value} = event.target;
-    setTransaction((prev) => ({ ...prev, [name]: value }));
-  }
+      if (!transaction.from) {
+        const randomId = Math.floor(Math.random() * 10000);
+        setTransaction((prev) => ({
+          ...prev,
+          id: randomId,
+          [name]: value,
+        }));
+      } else {
+        setTransaction((prev) => ({
+          ...prev,
+          [name]: value,
+        }));
+      }
+    }
+  
 
   useEffect(() => {
     if (flag) {
@@ -31,8 +54,8 @@ const AddTransactionForm = () => {
       });
     }
     // check for & handle errors
-    setTransaction(transaction)
-    setFlag(false)
+    // setTransaction(transaction)
+    setFlag(false);
   }, [flag]);
 
   return (
@@ -53,17 +76,27 @@ const AddTransactionForm = () => {
             ></input>
           </div>
           <div className="form-group">
-            <label className="form-label" placeholder="Category">
-              Category:{" "}
+            <label className="form-label" placeholder="item-name">
+              Item Name:{" "}
             </label>
-            <input type="text"></input>
+            <input
+              name={"item_name"}
+              value={transaction.item_name}
+              onChange={handleChange}
+              type="text"
+            ></input>
           </div>
           <div className="form-group">
             <label className="form-label" placeholder="Amount">
               {" "}
               Amount:{" "}
             </label>
-            <input type="text"></input>
+            <input
+              name={"amount"}
+              value={transaction.amount}
+              onChange={handleChange}
+              type="number"
+            ></input>
           </div>
           <button type="Submit" className="submit-button">
             {" "}
